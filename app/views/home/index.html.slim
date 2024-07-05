@@ -5,9 +5,9 @@
   .sms-section
     .flex-column.center.white-txt.mg-b
       h2.no-mg SMS Trigger
-      | Click this button to sent a automated triggered message to yourself.
+      | Click this button to send an automated triggered message to yourself.
     .flex-column.center
-      = button_to 'Trigger Automated SMS', "/home/send_sms_button", method: :post, class: 'btn btn-primary'
+      = button_to 'Send Default SMS', "/home/send_sms_button", method: :post, class: 'btn btn-primary'
   br
 
   .sms-section
