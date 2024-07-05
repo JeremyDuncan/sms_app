@@ -28,16 +28,9 @@ body {
     padding: 10px;
     margin-bottom: 5px;
     border-radius: 5px;
+    background-color: #e1e3f4;
+    border-left: 5px solid #56beda;
 }
-.job-message.start {
-    background-color: #e7f5ff;
-    border-left: 5px solid #1c7ed6;
-}
-.job-message.complete {
-    background-color: #ebfbee;
-    border-left: 5px solid #37b24d;
-}
-
 .flex-column {
     display: flex;
     flex-direction: column;

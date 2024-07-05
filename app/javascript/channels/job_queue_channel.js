@@ -12,7 +12,6 @@ consumer.subscriptions.create("JobQueueChannel", {
   received(data) {
     // Called when there's incoming data on the websocket for this channel
     const jobQueueElement = document.getElementById('job-queue');
-    const messageType = data.message.includes('Started') ? 'start' : 'complete';
-    jobQueueElement.insertAdjacentHTML('beforeend', `<pre class="job-message ${messageType}">${data.message}</pre>`);
+    jobQueueElement.insertAdjacentHTML('beforeend', `<pre class="job-message">${data.message}</pre>`);
   }
 });
