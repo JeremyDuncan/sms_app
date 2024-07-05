@@ -16,6 +16,19 @@ module SmsNotificationService
   def send_welcome_sms(user)
     send_sms(user, user.phone_number, "Welcome to Jeremy's Rails App, #{user.first_name} #{user.last_name}!")
   end
+  # =================================================
+  # Trigger SMS message if user clicks on SMS Button
+  # -------------------------------------------------
+  def send_button_trigger_sms(user)
+    send_sms(user, user.phone_number, "#{user.first_name} #{user.last_name} triggered this message with a button click!")
+  end
+
+  # =================================================
+  # Trigger Custom SMS message if user
+  # -------------------------------------------------
+  def send_custom_sms(user, phone_number, message_body)
+    send_sms(user, phone_number, "#{message_body} - #{user.first_name} #{user.last_name} ")
+  end
 
   # ===============================================
   # Ensures there is a delay between each execution
@@ -65,5 +78,4 @@ module SmsNotificationService
     Rails.logger.info "Sent message to #{message.to}: #{message.sid}"
     puts ""
   end
-
 end
