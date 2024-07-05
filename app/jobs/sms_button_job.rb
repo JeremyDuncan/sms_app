@@ -6,5 +6,6 @@ class SmsButtonJob < ApplicationJob
 
   def perform(user)
     SmsNotificationService.send_button_trigger_sms(user)
+    SmsLog.create(user: user, phone_number: user.phone_number, message: "#{user.first_name} #{user.last_name} triggered this message with a button click!", submission_type: "Automated SMS")
   end
 end
