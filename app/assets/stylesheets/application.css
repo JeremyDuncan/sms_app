@@ -20,6 +20,24 @@ body {
     padding-top: 100px;
     padding-bottom: 60px;
 }
+
+#job-queue {
+    margin-top: 20px;
+}
+.job-message {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+.job-message.start {
+    background-color: #e7f5ff;
+    border-left: 5px solid #1c7ed6;
+}
+.job-message.complete {
+    background-color: #ebfbee;
+    border-left: 5px solid #37b24d;
+}
+
 .flex-column {
     display: flex;
     flex-direction: column;
