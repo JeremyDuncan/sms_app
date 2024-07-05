@@ -1,0 +1,10 @@
+.flex-column.center
+  | All SMS message submissions are saved in the sms_logs table. (User ID, Message, Submission Type, Phone Number, Time Stamps)
+  br
+  br
+  .sms-section
+    .flex-column.center.white-txt.mg-b
+      h2.no-mg SMS Trigger
+      | Click this button to sent a automated triggered message to yourself.
+    .flex-column.center
+      = button_to 'Trigger Automated SMS', "/home/send_sms_button", method: :post, class: 'btn btn-primary'
