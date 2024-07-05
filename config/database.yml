@@ -8,14 +8,14 @@ default: &default
 
 development:
   <<: *default
-  database: realtime_sms_notification_development
+  database: sms_app_development
 
 test:
   <<: *default
-  database: realtime_sms_notification_test
+  database: sms_app_test
 
 production:
   <<: *default
-  database: realtime_sms_notification_production
+  database: sms_app_production
   #username: task_manager
   #password: <%= ENV['TASK_MANAGER_DATABASE_PASSWORD'] %>
