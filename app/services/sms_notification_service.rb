@@ -1,10 +1,14 @@
 ############################################################################
 ##  Provides methods to send SMS notifications using the Twilio API.      ##
 ##  It fetches the credentials from Rails encrypted credentials.yml.enc.  ##
+##  Throttles messages sent out to prevent API spamming.                  ##
 ############################################################################
 module SmsNotificationService
   extend self
   include ConsoleColors
+
+  SMS_THROTTLE = 5 #=> Throttle delay time
+  @last_scheduled_time = Time.now
 
   # ====================================
   # Trigger SMS message if user signs up
@@ -13,6 +17,15 @@ module SmsNotificationService
     send_sms(user, user.phone_number, "Welcome to Jeremy's Rails App, #{user.first_name} #{user.last_name}!")
   end
 
+  # ===============================================
+  # Ensures there is a delay between each execution
+  # -----------------------------------------------
+  def self.next_delay
+    now = Time.now
+    @last_scheduled_time = [@last_scheduled_time + SMS_THROTTLE.seconds, now].max
+    delay = @last_scheduled_time - now
+    delay
+  end
 
   private
   # ========================================================================
