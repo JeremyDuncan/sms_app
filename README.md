@@ -5,6 +5,10 @@ This app provides a system for sending SMS notifications using the Twilio API.
 Users can send predefined triggered SMS notifications to themselves or custom SMS messages to any number.
 The application tracks the messages sent, including timestamps, user IDs, and message details.
 
+## Screenshot
+
+<img src="app/assets/images/app_sh.webp" alt="App Screenshot" width="500">
+
 ## Features
 
 - User authentication with Devise
