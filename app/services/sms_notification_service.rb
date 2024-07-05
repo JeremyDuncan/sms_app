@@ -60,6 +60,7 @@ module SmsNotificationService
       to: phone_number
     )
     print_status(user, message)
+    print_to_channel_status(message)
   end
 
   def print_status(user, message)
@@ -77,5 +78,20 @@ module SmsNotificationService
     print_colored_line(color: :magenta, marked: false)
     Rails.logger.info "Sent message to #{message.to}: #{message.sid}"
     puts ""
+  end
+  def print_to_channel_status(message)
+    detailed_message = <<~DETAILS
+      ############################
+      ## Twilio Message Status  ##
+      ############################
+      Message: #{message.body}
+      From: #{message.from}
+      To: #{message.to}
+      Date Created: #{message.date_created}
+      Status: Sent
+    DETAILS
+
+    ActionCable.server.broadcast("job_queue_channel", { message: detailed_message })
+    Rails.logger.info "Sent message to #{message.to}: #{message.sid}"
   end
 end
