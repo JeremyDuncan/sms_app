@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def send_sms_button
     user = current_user
     if user
-      ActionCable.server.broadcast("job_queue_channel", { message: "#{Time.current} - Start SMS job - Phone Number: #{user.phone_number}" })
+      ActionCable.server.broadcast("job_queue_channel", { message: "#{Time.current} - Start SMS job - Number: #{user.phone_number}" })
       SmsButtonJob.set(wait: SmsNotificationService.next_delay).perform_later(user)
     end
   end
@@ -18,7 +18,7 @@ class HomeController < ApplicationController
     message = params[:message]
 
     if user && phone_number.present? && message.present?
-      ActionCable.server.broadcast("job_queue_channel", { message: "#{Time.current} - Start Custom SMS job - Phone Number: #{user.phone_number}" })
+      ActionCable.server.broadcast("job_queue_channel", { message: "#{Time.current} - Start Custom SMS job - Number: #{user.phone_number}" })
       SmsCustomJob.set(wait: SmsNotificationService.next_delay).perform_later(user, phone_number, message)
     end
   end
