@@ -26,3 +26,10 @@
           = form.text_area :message, class: 'form-field'
         .flex-column.center
           = form.submit 'Send Custom SMS', class: 'btn btn-primary'
+  br
+  .sms-section
+    .flex-column.center.white-txt.mg-b
+      / Show Realtime Job Queue in progress
+      h2.no-mg Job Queue
+      | This section uses Rails Action Cable to display the status of jobs dynamically.
+    #job-queue.flex-column.center
