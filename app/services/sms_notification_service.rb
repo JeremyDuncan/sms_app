@@ -35,6 +35,7 @@ module SmsNotificationService
   # -----------------------------------------------
   def self.next_delay
     now = Time.now
+    # Takes maximum of these two times, Ensures that the next scheduled time for sending an SMS is always in the future.
     @last_scheduled_time = [@last_scheduled_time + SMS_THROTTLE.seconds, now].max
     delay = @last_scheduled_time - now
     delay
